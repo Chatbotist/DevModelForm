@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>Анкета VProject</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Прогресс-бар -->
+      <div class="fixed-header">
+        <div class="progress-bar">
+          <div class="progress" id="progress"></div>
+        </div>
+      </div>
+
+      <!-- Прокручиваемый контейнер для шагов -->
+      <div class="step-container" id="step-container">
+        <!-- Выбор роли -->
+        <div class="step active" id="role-selection">
+          <h1>VProject</h1>
+          <h2>Стань частью команды VProject</h2>
+          <p>
+            Хочешь попробовать себя в роли модели или скаута? Заполни анкету и
+            мы свяжемся с тобой
+          </p>
+          <div class="form-group">
+            <p>Хочешь стать моделью или являешься скаутом?</p>
+            <div class="role-buttons">
+              <button class="role-btn" data-role="model">Модель</button>
+              <button class="role-btn" data-role="scout">Скаут</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Анкета модели: Шаг 1 -->
+        <div class="step model-step" id="model-step-1">
+          <h1>Общая информация</h1>
+          <div class="form-group">
+            <label>Ваш пол</label>
+            <div class="gender-buttons">
+              <button class="gender-btn active" data-gender="Девушка">
+                <i class="fas fa-venus"></i> Девушка
+              </button>
+              <button class="gender-btn" data-gender="Юноша">
+                <i class="fas fa-mars"></i> Юноша
+              </button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-id-card"></i> Ваше имя и фамилия</label>
+            <input
+              type="text"
+              id="model-name"
+              placeholder="Введите имя и фамилию"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-calendar"></i> Возраст</label>
+            <div class="custom-select">
+              <select id="model-age" required></select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-phone"></i> Номер телефона</label>
+            <input
+              type="tel"
+              id="model-phone"
+              placeholder="+7 911 697 91 11"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label><i class="fab fa-telegram"></i> Ник в Telegram</label>
+            <input
+              type="text"
+              id="model-telegram"
+              placeholder="@username"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Анкета модели: Шаг 2 -->
+        <div class="step model-step" id="model-step-2">
+          <h1>Параметры</h1>
+          <div class="form-group">
+            <label><i class="fas fa-ruler-vertical"></i> Рост (см)</label>
+            <div class="custom-select">
+              <select id="model-height" required></select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-tape"></i> Объем груди (см)</label>
+            <div class="custom-select">
+              <select id="model-chest" required></select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-tape"></i> Объем талии (см)</label>
+            <div class="custom-select">
+              <select id="model-waist" required></select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-tape"></i> Объем бедер (см)</label>
+            <div class="custom-select">
+              <select id="model-hips" required></select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label
+              ><i class="fas fa-map-marker-alt"></i> Ваше местоположение</label
+            >
+            <div class="custom-select">
+              <select id="model-city" required></select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Анкета модели: Шаг 3 -->
+        <div class="step model-step" id="model-step-3">
+          <h1>Опиши фото и видео</h1>
+          <div class="form-group">
+            <label><i class="fab fa-instagram"></i> Instagram</label>
+            <input
+              type="text"
+              id="model-instagram"
+              placeholder="Ссылка на Instagram"
+            />
+            <button class="add-link-btn" data-target="model-instagram-links">
+              <i class="fas fa-plus"></i> Добавить ссылку
+            </button>
+            <div class="link-list" id="model-instagram-links"></div>
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-briefcase"></i> Портфолио</label>
+            <input
+              type="text"
+              id="model-portfolio"
+              placeholder="Ссылка на портфолио"
+            />
+            <button class="add-link-btn" data-target="model-portfolio-links">
+              <i class="fas fa-plus"></i> Добавить ссылку
+            </button>
+            <div class="link-list" id="model-portfolio-links"></div>
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-camera"></i> Снэпы</label>
+            <input type="text" id="model-snaps" placeholder="Вставьте ссылку" />
+            <button class="add-link-btn" data-target="model-snaps-links">
+              <i class="fas fa-plus"></i> Добавить ссылку
+            </button>
+            <div class="link-list" id="model-snaps-links"></div>
+          </div>
+        </div>
+
+        <!-- Анкета скаута: Шаг 1 -->
+        <div class="step scout-step" id="scout-step-1">
+          <h1>Общая информация</h1>
+          <div class="form-group">
+            <label><i class="fas fa-id-card"></i> Ваше имя и фамилия</label>
+            <input
+              type="text"
+              id="scout-name"
+              placeholder="Введите имя и фамилию"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-phone"></i> Номер телефона</label>
+            <input
+              type="tel"
+              id="scout-phone"
+              placeholder="+7 911 697 91 11"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label><i class="fab fa-telegram"></i> Ник в Telegram</label>
+            <input
+              type="text"
+              id="scout-telegram"
+              placeholder="@username"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Анкета скаута: Шаг 2 -->
+        <div class="step scout-step" id="scout-step-2">
+          <h1>Параметры модели</h1>
+          <div class="form-group">
+            <label><i class="fas fa-ruler-vertical"></i> Рост (см)</label>
+            <div class="custom-select">
+              <select id="scout-height" required></select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-tape"></i> Объем груди (см)</label>
+            <div class="custom-select">
+              <select id="scout-chest" required></select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-tape"></i> Объем талии (см)</label>
+            <div class="custom-select">
+              <select id="scout-waist" required></select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-tape"></i> Объем бедер (см)</label>
+            <div class="custom-select">
+              <select id="scout-hips" required></select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-calendar"></i> Возраст</label>
+            <div class="custom-select">
+              <select id="scout-age" required></select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Анкета скаута: Шаг 3 -->
+        <div class="step scout-step" id="scout-step-3">
+          <h1>Фото модели</h1>
+          <div class="form-group">
+            <label
+              ><i class="fas fa-camera"></i> Загрузите фото модели (минимум
+              3)</label
+            >
+            <input
+              type="file"
+              id="scout-photos"
+              accept="image/*"
+              multiple
+              style="display: none"
+            />
+            <button class="upload-btn" id="upload-photos-btn">
+              <i class="fas fa-upload"></i> Выбрать фото
+            </button>
+            <p id="photo-counter">Загружено: 0/3</p>
+            <div class="photo-preview" id="scout-photo-preview"></div>
+          </div>
+          <div class="form-group">
+            <label
+              ><i class="fas fa-map-marker-alt"></i> Ваше местоположение</label
+            >
+            <div class="custom-select">
+              <select id="scout-city" required></select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Навигация -->
+      <div class="navigation">
+        <button class="back-btn" id="back-btn" style="display: none">
+          <i class="fas fa-arrow-left"></i> Назад
+        </button>
+        <button class="next-btn" id="next-btn">Далее</button>
+        <button class="submit-btn" id="submit-btn" style="display: none">
+          Отправить анкету
+        </button>
+      </div>
+
+      <!-- Модальное окно -->
+      <div class="modal" id="success-modal">
+        <div class="modal-content">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/148/148767.png"
+            alt="Success Icon"
+            class="modal-icon"
+          />
+          <h2>Ваша заявка успешно отправлена!</h2>
+          <p>Мы свяжемся с вами в ближайшее время.</p>
+          <button class="modal-close-btn" id="modal-close-btn">Закрыть</button>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
