@@ -1,0 +1,400 @@
+body {
+  background: #e5e5e5;
+  color: #000;
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #e5e5e5;
+}
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #e5e5e5;
+  padding: 10px 20px;
+  z-index: 1000;
+  border-bottom: 1px solid #ccc;
+}
+
+.progress-bar {
+  height: 4px;
+  background: #ccc;
+  border-radius: 2px;
+}
+
+.progress {
+  height: 100%;
+  background: #000;
+  border-radius: 2px;
+  width: 0;
+  transition: width 0.5s ease;
+}
+
+.step-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 40px 20px 20px;
+}
+
+.step {
+  display: none;
+  animation: fadeIn 0.5s ease;
+}
+
+.step.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 500;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 14px;
+  text-align: left;
+  margin-bottom: 20px;
+  color: #666;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+label i {
+  margin-right: 8px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 12px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  color: #000;
+  font-size: 16px;
+  transition: border 0.3s;
+}
+
+input:focus,
+select:focus {
+  border: 1px solid #000;
+  outline: none;
+}
+
+/* Кастомный селект */
+.custom-select {
+  position: relative;
+  width: 100%;
+}
+
+.custom-select select {
+  appearance: none;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 12px;
+  width: 100%;
+  color: #000;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.custom-select::after {
+  content: "\f078"; /* Font Awesome chevron-down */
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  color: #000;
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.custom-select select:focus {
+  border: 1px solid #000;
+}
+
+.gender-buttons,
+.role-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.gender-btn,
+.role-btn {
+  flex: 1;
+  padding: 12px;
+  background: #fff;
+  color: #000;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.gender-btn.active,
+.role-btn.active {
+  background: #000;
+  color: #fff;
+  border: 1px solid #000;
+}
+
+.gender-btn:hover,
+.role-btn:hover {
+  transform: scale(1.05);
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background: #e5e5e5;
+  border-top: 1px solid #ccc;
+}
+
+.back-btn,
+.next-btn,
+.submit-btn {
+  padding: 12px 20px;
+  background: #fff;
+  color: #000;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.back-btn:hover,
+.next-btn:hover,
+.submit-btn:hover {
+  background: #f0f0f0;
+  transform: scale(1.05);
+}
+
+/* Стили для загрузки фото */
+.upload-btn {
+  width: 100%;
+  padding: 12px;
+  background: #fff;
+  color: #000;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.3s;
+}
+
+.upload-btn:hover {
+  background: #f0f0f0;
+}
+
+.photo-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.photo-preview .photo-item {
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.photo-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.photo-preview .remove-photo {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #ff4444;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+/* Стили для списка ссылок */
+.add-link-btn {
+  width: 100%;
+  padding: 8px;
+  background: #fff;
+  color: #000;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 5px;
+  transition: background 0.3s;
+}
+
+.add-link-btn:hover {
+  background: #f0f0f0;
+}
+
+.link-list {
+  margin-top: 10px;
+}
+
+.link-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  margin-bottom: 5px;
+}
+
+.link-item a {
+  color: #000;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.remove-link {
+  background: none;
+  border: none;
+  color: #000;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Стили для модального окна */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 2000;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 90%;
+  border: 1px solid #ccc;
+  animation: slideIn 0.5s ease;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 15px;
+}
+
+.modal-content h2 {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.modal-content p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.modal-close-btn {
+  padding: 10px 20px;
+  background: #fff;
+  color: #000;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.modal-close-btn:hover {
+  background: #f0f0f0;
+}
+#role-selection h1 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 6vw; /* Может потребоваться немного больший размер */
+  color: white;
+  text-align: center;
+  margin: 0 auto;
+  letter-spacing: 2px; /* Небольшое увеличение межбуквенного расстояния */
+}
+
+@media (max-width: 768px) {
+  #role-selection h1 {
+    font-size: 22vw; /* Увеличенный размер шрифта для телефонов */
+  }
+}
